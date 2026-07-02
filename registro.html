@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Registro</title>
+
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Arial;
+        }
+
+        body{
+            min-height:100vh;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            background:linear-gradient(135deg,#667eea,#764ba2);
+        }
+
+        .card{
+            width:400px;
+            background:white;
+            padding:30px;
+            border-radius:15px;
+        }
+
+        .card h2{
+            text-align:center;
+            margin-bottom:20px;
+        }
+
+        .card input{
+            width:100%;
+            padding:12px;
+            margin-bottom:12px;
+            border:1px solid #ccc;
+            border-radius:8px;
+        }
+
+        .card button{
+            width:100%;
+            padding:12px;
+            border:none;
+            border-radius:8px;
+            background:#667eea;
+            color:white;
+            cursor:pointer;
+        }
+
+        .mensaje{
+            margin-top:15px;
+            text-align:center;
+        }
+    </style>
+</head>
+<body>
+
+<div class="card">
+
+    <h2>Registro</h2>
+
+    <input type="text" id="nombres" placeholder="Nombres">
+    <input type="text" id="apellidos" placeholder="Apellidos">
+    <input type="text" id="cedula" placeholder="Cédula" maxlength="16">
+    <input type="text" id="celular" placeholder="Celular" maxlength="9">
+    <input type="text" id="direccion" placeholder="Dirección">
+    <input type="text" id="usuario" placeholder="Usuario">
+    <input type="password" id="password" placeholder="Contraseña">
+
+    <button onclick="registrar()">
+        Registrarse
+    </button>
+
+    <p class="mensaje" id="mensaje"></p>
+
+</div>
+
+<script>
+
+    // ======================
+    // Máscara Cédula
+    // Formato: 000-000000-0000A
+    // ======================
+
+    const txtCedula = document.getElementById('cedula');
+
+    txtCedula.addEventListener('input', function () {
+
+        let valor = this.value.toUpperCase();
+
+        // Solo números y letra
+        valor = valor.replace(/[^0-9A-Z]/g, '');
+
+        // La letra solamente puede ir al final
+        let letra = '';
+        if(/[A-Z]$/.test(valor)){
+            letra = valor.slice(-1);
+            valor = valor.slice(0,-1);
+        }
+
+        valor = valor.substring(0,13);
+
+        let resultado = '';
+
+        if(valor.length <= 3){
+
+            resultado = valor;
+
+        }else if(valor.length <= 9){
+
+            resultado =
+                valor.substring(0,3) +
+                '-' +
+                valor.substring(3);
+
+        }else{
+
+            resultado =
+                valor.substring(0,3) +
+                '-' +
+                valor.substring(3,9) +
+                '-' +
+                valor.substring(9,13);
+
+        }
+
+        this.value = resultado + letra;
+
+    });
+
+
+    // ======================
+    // Máscara Celular
+    // Formato: 8888-8888
+    // ======================
+
+    const txtCelular = document.getElementById('celular');
+
+    txtCelular.addEventListener('input', function(){
+
+        let valor = this.value.replace(/\D/g,'');
+
+        valor = valor.substring(0,8);
+
+        if(valor.length > 4){
+
+            valor =
+                valor.substring(0,4) +
+                '-' +
+                valor.substring(4);
+
+        }
+
+        this.value = valor;
+
+    });
+
+async function registrar(){
+
+    const data = {
+
+        nombres: document.getElementById('nombres').value,
+        apellidos: document.getElementById('apellidos').value,
+        cedula: document.getElementById('cedula').value,
+        celular: document.getElementById('celular').value,
+        direccion: document.getElementById('direccion').value,
+        usuario: document.getElementById('usuario').value,
+        password: document.getElementById('password').value
+    };
+
+    const response = await fetch(
+        'http://localhost:3000/registro',
+        {
+            method:'POST',
+            headers:{
+                'Content-Type':'application/json'
+            },
+            body:JSON.stringify(data)
+        }
+    );
+
+    const result = await response.json();
+
+    if(result.ok){
+
+        alert('Usuario registrado correctamente');
+
+        window.location.href = 'login.html';
+
+    }else{
+
+        alert(result.mensaje);
+    }
+}
+
+</script>
+
+</body>
+</html>
