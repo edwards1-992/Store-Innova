@@ -415,7 +415,7 @@ async function cargarProductos(){
 
     try{
 
-        const response = await fetch('http://localhost:3000/productos');
+        const response = await fetch('/productos');
         const productos = await response.json();
 
         const contenedor = document.getElementById('contenedor-productos');

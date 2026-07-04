@@ -16,7 +16,7 @@ async function registrarUsuario() {
 
     try {
 
-        const response = await fetch('http://localhost:3000/registro', {
+        const response = await fetch('/registro', {
 
             method: 'POST',
 
