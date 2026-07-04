@@ -1,272 +1,85 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
-
     <meta charset="UTF-8">
-
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
-
-    <title>Login - Innovatech</title>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar Sesión — InnovaTech</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-
-        *{
-            margin:0;
-            padding:0;
-            box-sizing:border-box;
-            font-family:Arial,sans-serif;
+        * { margin:0; padding:0; box-sizing:border-box; font-family:'Inter',sans-serif; }
+        body {
+            min-height:100vh; display:flex; justify-content:center; align-items:center;
+            background: #f4f6fb; padding:20px;
         }
-
-        body{
-
-            height:100vh;
-
-            display:flex;
-
-            justify-content:center;
-
-            align-items:center;
-
-            background:linear-gradient(
-                135deg,
-                #667eea,
-                #764ba2
-            );
+        .card {
+            width:400px; max-width:100%; background:white; padding:40px;
+            border-radius:20px; box-shadow:0 4px 24px rgba(0,0,0,0.06);
+            border:1px solid #f0f0f5;
         }
-
-        .login-container{
-
-            width:350px;
-
-            background:white;
-
-            padding:40px;
-
-            border-radius:20px;
-
-            box-shadow:0 10px 25px rgba(0,0,0,0.2);
-
-            animation:fadeIn .5s ease;
+        .logo-link {
+            display:flex; align-items:center; justify-content:center; gap:8px;
+            text-decoration:none; margin-bottom:32px;
         }
-
-        .login-container h1{
-
-            text-align:center;
-
-            margin-bottom:30px;
-
-            color:#333;
+        .logo-link img { height:36px; }
+        .logo-link span { font-size:20px; font-weight:800; color:#1a1a2e; }
+        .card h1 { text-align:center; font-size:22px; font-weight:700; color:#1a1a2e; margin-bottom:8px; }
+        .card p.sub { text-align:center; color:#9ca3af; font-size:14px; margin-bottom:28px; }
+        .card input {
+            width:100%; padding:14px 16px; margin-bottom:14px;
+            border:1px solid #e5e7eb; border-radius:10px; font-size:14px;
+            background:#f9fafb; transition:all 0.2s;
         }
-
-        .login-container input{
-
-            width:100%;
-
-            padding:14px;
-
-            margin-bottom:15px;
-
-            border:none;
-
-            border-radius:10px;
-
-            background:#f1f1f1;
-
-            font-size:15px;
+        .card input:focus { outline:none; border-color:#4f46e5; background:white; box-shadow:0 0 0 3px rgba(79,70,229,0.1); }
+        .card button {
+            width:100%; padding:14px; border:none; border-radius:10px;
+            background:#4f46e5; color:white; font-size:15px; font-weight:600;
+            cursor:pointer; transition:all 0.2s;
         }
-
-        .login-container button{
-
-            width:100%;
-
-            padding:14px;
-
-            border:none;
-
-            border-radius:10px;
-
-            background:#667eea;
-
-            color:white;
-
-            font-size:16px;
-
-            cursor:pointer;
-
-            transition:.3s;
-        }
-
-        .login-container button:hover{
-
-            background:#5a67d8;
-        }
-
-        .registro{
-
-            margin-top:20px;
-
-            text-align:center;
-        }
-
-        .registro a{
-
-            color:#667eea;
-
-            text-decoration:none;
-
-            font-weight:bold;
-        }
-
-        #error{
-
-            color:red;
-
-            margin-top:15px;
-
-            text-align:center;
-        }
-
-        @keyframes fadeIn{
-
-            from{
-
-                opacity:0;
-                transform:translateY(-20px);
-            }
-
-            to{
-
-                opacity:1;
-                transform:translateY(0);
-            }
-        }
-
+        .card button:hover { background:#4338ca; transform:translateY(-1px); }
+        .card .registro { margin-top:20px; text-align:center; font-size:14px; color:#6b7280; }
+        .card .registro a { color:#4f46e5; text-decoration:none; font-weight:600; }
+        #error { color:#ef4444; margin-top:16px; text-align:center; font-size:14px; }
     </style>
-
 </head>
-
 <body>
+<div class="card">
+    <a href="index.html" class="logo-link">
+        <img src="img/Logo moderno InnovaT.png" alt="InnovaTech">
+        <span>InnovaTech</span>
+    </a>
+    <h1>Bienvenido de nuevo</h1>
+    <p class="sub">Ingresa tus credenciales para continuar</p>
+    <input type="text" id="usuario" placeholder="Usuario">
+    <input type="password" id="password" placeholder="Contraseña">
+    <button onclick="login()">Ingresar</button>
+    <div class="registro">¿No tienes cuenta? <a href="registro.html">Registrarse</a></div>
+    <p id="error"></p>
+</div>
 
-    <div class="login-container">
-
-        <h1>
-            Iniciar Sesión
-        </h1>
-
-        <input
-            type="text"
-            id="usuario"
-            placeholder="Usuario"
-        >
-
-        <input
-            type="password"
-            id="password"
-            placeholder="Contraseña"
-        >
-
-        <button onclick="login()">
-            Ingresar
-        </button>
-
-        <div class="registro">
-
-            ¿No tienes cuenta?
-
-            <a href="registro.html">
-                Registrarse
-            </a>
-
-        </div>
-
-        <p id="error"></p>
-
-    </div>
-
-    <script>
-
-        async function login() {
-
-            const usuario =
-                document.getElementById(
-                    "usuario"
-                ).value;
-
-            const password =
-                document.getElementById(
-                    "password"
-                ).value;
-
-            try {
-
-                const response = await fetch(
-
-                    "/login",
-
-                    {
-
-                        method:"POST",
-
-                        headers:{
-                            "Content-Type":
-                            "application/json"
-                        },
-
-                        body:JSON.stringify({
-
-                            usuario,
-                            password
-
-                        })
-                    }
-                );
-
-                const data =
-                    await response.json();
-
-                if(data.ok){
-
-                    localStorage.setItem(
-
-                        "usuario",
-
-                        JSON.stringify(
-                            data.usuario
-                        )
-                    );
-
-                    localStorage.setItem(
-                        "auth",
-                        "true"
-                    );
-
-                    window.location.href =
-                        "index.html";
-
-
-                }else{
-
-                    document.getElementById(
-                        "error"
-                    ).innerText =
-                        data.mensaje;
-                }
-
-            } catch(error){
-
-                console.log(error);
-
-                document.getElementById(
-                    "error"
-                ).innerText =
-                    "Error de conexión";
-            }
+<script>
+async function login() {
+    const usuario = document.getElementById('usuario').value;
+    const password = document.getElementById('password').value;
+    try {
+        const response = await fetch('/login', {
+            method:"POST",
+            headers:{"Content-Type":"application/json"},
+            body:JSON.stringify({usuario, password})
+        });
+        const data = await response.json();
+        if(data.ok){
+            localStorage.setItem("usuario", JSON.stringify(data.usuario));
+            localStorage.setItem("auth", "true");
+            window.location.href = "index.html";
+        } else {
+            document.getElementById("error").innerText = data.mensaje;
         }
-
-    </script>
-
+    } catch(error){
+        console.log(error);
+        document.getElementById("error").innerText = "Error de conexión";
+    }
+}
+</script>
 </body>
-
 </html>

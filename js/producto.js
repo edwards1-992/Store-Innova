@@ -10,4 +10,4 @@ document.getElementById("producto-nombre").textContent = nombre;
 document.getElementById("producto-img").src = "img/" + img;
 
 // Si quieres mostrar el precio
-document.getElementById("producto-precio").textContent = "Precio: $" + precio;
+document.getElementById("producto-precio").textContent = "$" + parseFloat(precio).toLocaleString("en-US", {minimumFractionDigits:2});
