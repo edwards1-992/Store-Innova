@@ -198,7 +198,9 @@ if (formCarrito) {
             ).innerText;
 
             const precio = parseFloat(
-                precioTexto.replace(/[^0-9.]/g, "")
+                precioTexto.replace("Precio:", "")
+                        .replace("$", "")
+                        .trim()
             );
 
             const cantidad = parseInt(

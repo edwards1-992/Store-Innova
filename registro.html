@@ -2,53 +2,66 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Crear Cuenta — InnovaTech</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <title>Registro</title>
+
     <style>
-        * { margin:0; padding:0; box-sizing:border-box; font-family:'Inter',sans-serif; }
-        body {
-            min-height:100vh; display:flex; justify-content:center; align-items:center;
-            background:#f4f6fb; padding:20px;
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Arial;
         }
-        .card {
-            width:440px; max-width:100%; background:white; padding:36px;
-            border-radius:20px; box-shadow:0 4px 24px rgba(0,0,0,0.06);
-            border:1px solid #f0f0f5;
+
+        body{
+            min-height:100vh;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            background:linear-gradient(135deg,#667eea,#764ba2);
         }
-        .logo-link {
-            display:flex; align-items:center; justify-content:center; gap:8px;
-            text-decoration:none; margin-bottom:28px;
+
+        .card{
+            width:400px;
+            background:white;
+            padding:30px;
+            border-radius:15px;
         }
-        .logo-link img { height:36px; }
-        .logo-link span { font-size:20px; font-weight:800; color:#1a1a2e; }
-        .card h1 { text-align:center; font-size:22px; font-weight:700; color:#1a1a2e; margin-bottom:6px; }
-        .card p.sub { text-align:center; color:#9ca3af; font-size:14px; margin-bottom:24px; }
-        .card input {
-            width:100%; padding:13px 16px; margin-bottom:12px;
-            border:1px solid #e5e7eb; border-radius:10px; font-size:14px;
-            background:#f9fafb; transition:all 0.2s;
+
+        .card h2{
+            text-align:center;
+            margin-bottom:20px;
         }
-        .card input:focus { outline:none; border-color:#4f46e5; background:white; box-shadow:0 0 0 3px rgba(79,70,229,0.1); }
-        .card button {
-            width:100%; padding:14px; border:none; border-radius:10px;
-            background:#4f46e5; color:white; font-size:15px; font-weight:600;
-            cursor:pointer; transition:all 0.2s; margin-top:4px;
+
+        .card input{
+            width:100%;
+            padding:12px;
+            margin-bottom:12px;
+            border:1px solid #ccc;
+            border-radius:8px;
         }
-        .card button:hover { background:#4338ca; transform:translateY(-1px); }
-        .card .login-link { margin-top:20px; text-align:center; font-size:14px; color:#6b7280; }
-        .card .login-link a { color:#4f46e5; text-decoration:none; font-weight:600; }
+
+        .card button{
+            width:100%;
+            padding:12px;
+            border:none;
+            border-radius:8px;
+            background:#667eea;
+            color:white;
+            cursor:pointer;
+        }
+
+        .mensaje{
+            margin-top:15px;
+            text-align:center;
+        }
     </style>
 </head>
 <body>
+
 <div class="card">
-    <a href="index.html" class="logo-link">
-        <img src="img/Logo moderno InnovaT.png" alt="InnovaTech">
-        <span>InnovaTech</span>
-    </a>
-    <h1>Crear cuenta</h1>
-    <p class="sub">Completa tus datos para registrarte</p>
+
+    <h2>Registro</h2>
+
     <input type="text" id="nombres" placeholder="Nombres">
     <input type="text" id="apellidos" placeholder="Apellidos">
     <input type="text" id="cedula" placeholder="Cédula" maxlength="16">
@@ -56,35 +69,99 @@
     <input type="text" id="direccion" placeholder="Dirección">
     <input type="text" id="usuario" placeholder="Usuario">
     <input type="password" id="password" placeholder="Contraseña">
-    <button onclick="registrar()">Crear cuenta</button>
-    <div class="login-link">¿Ya tienes cuenta? <a href="login.html">Iniciar sesión</a></div>
+
+    <button onclick="registrar()">
+        Registrarse
+    </button>
+
+    <p class="mensaje" id="mensaje"></p>
+
 </div>
 
 <script>
-const txtCedula = document.getElementById('cedula');
-txtCedula.addEventListener('input', function () {
-    let valor = this.value.toUpperCase();
-    valor = valor.replace(/[^0-9A-Z]/g, '');
-    let letra = '';
-    if(/[A-Z]$/.test(valor)){ letra = valor.slice(-1); valor = valor.slice(0,-1); }
-    valor = valor.substring(0,13);
-    let resultado = '';
-    if(valor.length <= 3) resultado = valor;
-    else if(valor.length <= 9) resultado = valor.substring(0,3) + '-' + valor.substring(3);
-    else resultado = valor.substring(0,3) + '-' + valor.substring(3,9) + '-' + valor.substring(9,13);
-    this.value = resultado + letra;
-});
 
-const txtCelular = document.getElementById('celular');
-txtCelular.addEventListener('input', function(){
-    let valor = this.value.replace(/\D/g,'');
-    valor = valor.substring(0,8);
-    if(valor.length > 4) valor = valor.substring(0,4) + '-' + valor.substring(4);
-    this.value = valor;
-});
+    // ======================
+    // Máscara Cédula
+    // Formato: 000-000000-0000A
+    // ======================
+
+    const txtCedula = document.getElementById('cedula');
+
+    txtCedula.addEventListener('input', function () {
+
+        let valor = this.value.toUpperCase();
+
+        // Solo números y letra
+        valor = valor.replace(/[^0-9A-Z]/g, '');
+
+        // La letra solamente puede ir al final
+        let letra = '';
+        if(/[A-Z]$/.test(valor)){
+            letra = valor.slice(-1);
+            valor = valor.slice(0,-1);
+        }
+
+        valor = valor.substring(0,13);
+
+        let resultado = '';
+
+        if(valor.length <= 3){
+
+            resultado = valor;
+
+        }else if(valor.length <= 9){
+
+            resultado =
+                valor.substring(0,3) +
+                '-' +
+                valor.substring(3);
+
+        }else{
+
+            resultado =
+                valor.substring(0,3) +
+                '-' +
+                valor.substring(3,9) +
+                '-' +
+                valor.substring(9,13);
+
+        }
+
+        this.value = resultado + letra;
+
+    });
+
+
+    // ======================
+    // Máscara Celular
+    // Formato: 8888-8888
+    // ======================
+
+    const txtCelular = document.getElementById('celular');
+
+    txtCelular.addEventListener('input', function(){
+
+        let valor = this.value.replace(/\D/g,'');
+
+        valor = valor.substring(0,8);
+
+        if(valor.length > 4){
+
+            valor =
+                valor.substring(0,4) +
+                '-' +
+                valor.substring(4);
+
+        }
+
+        this.value = valor;
+
+    });
 
 async function registrar(){
+
     const data = {
+
         nombres: document.getElementById('nombres').value,
         apellidos: document.getElementById('apellidos').value,
         cedula: document.getElementById('cedula').value,
@@ -93,11 +170,33 @@ async function registrar(){
         usuario: document.getElementById('usuario').value,
         password: document.getElementById('password').value
     };
-    const response = await fetch('/registro', { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(data) });
+
+    const response = await fetch(
+        '/registro',
+        {
+            method:'POST',
+            headers:{
+                'Content-Type':'application/json'
+            },
+            body:JSON.stringify(data)
+        }
+    );
+
     const result = await response.json();
-    if(result.ok){ alert('Usuario registrado correctamente'); window.location.href = 'login.html'; }
-    else { alert(result.mensaje); }
+
+    if(result.ok){
+
+        alert('Usuario registrado correctamente');
+
+        window.location.href = 'login.html';
+
+    }else{
+
+        alert(result.mensaje);
+    }
 }
+
 </script>
+
 </body>
 </html>
