@@ -142,10 +142,10 @@ app.get('/mis-ventas-detalle/:usuario', async (req, res) => {
 
 const PORT = process.env.PORT || 3000;
 
-console.log('MYSQLHOST:', process.env.MYSQLHOST || 'localhost');
-console.log('MYSQLPORT:', process.env.MYSQLPORT || 3306);
-console.log('MYSQLUSER:', process.env.MYSQLUSER || 'root');
-console.log('MYSQLDATABASE:', process.env.MYSQLDATABASE || 'tiendaOnline');
+console.log('Usando MYSQL_URL:', !!process.env.MYSQL_URL);
+console.log('MYSQLHOST:', process.env.MYSQLHOST || 'no definido');
+console.log('MYSQLPORT:', process.env.MYSQLPORT || 'no definido');
+console.log('MYSQLDATABASE:', process.env.MYSQLDATABASE || 'no definido');
 
 app.listen(PORT, () => {
     console.log('Servidor corriendo en puerto', PORT);
