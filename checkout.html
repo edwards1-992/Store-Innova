@@ -10,60 +10,68 @@
         * { margin:0; padding:0; box-sizing:border-box; font-family:'Inter',sans-serif; }
         body { min-height:100vh; background:linear-gradient(160deg,#0f172a 0%,#1e293b 50%,#334155 100%); color:white; }
 
-        .navbar { width:100%; padding:0 40px; height:80px; display:flex; justify-content:space-between; align-items:center; background:rgba(255,255,255,0.06); backdrop-filter:blur(16px); border-bottom:1px solid rgba(255,255,255,0.08); position:sticky; top:0; z-index:1000; transition:all 0.3s; }
-        .navbar.scrolled { background:rgba(15,23,42,0.95); box-shadow:0 4px 30px rgba(0,0,0,0.4); }
-        .logo { display:flex; align-items:center; }
-        .logo img { height:85px; }
-        .menu { display:flex; gap:6px; }
-        .menu a { text-decoration:none; color:rgba(255,255,255,0.85); padding:10px 20px; border-radius:8px; background:rgba(255,255,255,0.08); transition:all 0.3s; font-size:14px; font-weight:500; border:1px solid transparent; }
-        .menu a:hover { background:rgba(59,130,246,0.15); border-color:rgba(59,130,246,0.3); color:white; }
-        .usuario-info { display:flex; align-items:center; gap:14px; }
-        .usuario-info span { font-weight:600; font-size:14px; color:rgba(255,255,255,0.7); }
-        .usuario-info button { padding:10px 22px; border:none; border-radius:8px; cursor:pointer; background:linear-gradient(135deg,#3b82f6,#2563eb); color:white; font-weight:600; font-size:13px; transition:0.3s; }
+        #navbar { position:fixed; top:0; left:0; right:0; z-index:1000; background:rgba(15,23,42,0.92); backdrop-filter:blur(20px); border-bottom:1px solid rgba(255,255,255,0.06); }
+        .nav-inner { display:flex; align-items:center; justify-content:space-between; padding:0 40px; height:80px; }
+        .logo-img { height:100px; width:auto; object-fit:contain; transition:0.3s; cursor:pointer; }
+        .logo-img:hover { transform:scale(1.04); }
+        .nav-links { display:flex; align-items:center; gap:4px; }
+        .nav-links a { text-decoration:none; color:rgba(255,255,255,0.7); padding:10px 20px; border-radius:8px; font-size:14px; font-weight:500; transition:0.3s; }
+        .nav-links a:hover { color:white; background:rgba(255,255,255,0.08); }
+        .nav-actions { display:flex; align-items:center; gap:12px; }
+        .usuario-btn { padding:10px 22px; border:none; border-radius:8px; cursor:pointer; background:linear-gradient(135deg,#3b82f6,#2563eb); color:white; font-weight:600; font-size:13px; transition:0.3s; white-space:nowrap; }
+        .usuario-btn:hover { transform:translateY(-1px); }
         .hamburger { display:none; flex-direction:column; gap:5px; cursor:pointer; padding:8px; background:none; border:none; }
         .hamburger span { width:24px; height:2px; background:white; border-radius:2px; }
+        .mobile-nav { display:none; flex-direction:column; gap:4px; padding:16px 24px 20px; border-top:1px solid rgba(255,255,255,0.06); background:rgba(15,23,42,0.98); }
+        .mobile-nav.open { display:flex; }
+        .mobile-nav a { text-decoration:none; color:rgba(255,255,255,0.7); padding:14px 16px; border-radius:10px; font-size:16px; font-weight:500; }
+        .mobile-nav .usuario-btn { width:100%; text-align:center; margin-top:8px; }
 
-        .container { max-width:700px; margin:50px auto; padding:0 16px; }
+        .container { max-width:700px; margin:120px auto 50px; padding:0 16px; }
         .card { background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.08); border-radius:16px; padding:32px; backdrop-filter:blur(8px); }
         .card h1 { text-align:center; margin-bottom:24px; font-size:24px; }
         .user-box { background:rgba(255,255,255,0.08); padding:16px; border-radius:10px; margin-bottom:20px; border:1px solid rgba(255,255,255,0.08); font-size:14px; line-height:1.7; color:rgba(255,255,255,0.7); }
         .item { background:rgba(255,255,255,0.05); padding:14px; border-radius:10px; margin-bottom:10px; border:1px solid rgba(255,255,255,0.06); }
         .total { text-align:right; font-size:22px; font-weight:700; margin-top:20px; color:#60a5fa; }
-        .btn-confirm { width:100%; padding:16px; margin-top:24px; border:none; border-radius:10px; background:linear-gradient(135deg,#3b82f6,#2563eb); color:white; font-weight:600; font-size:16px; cursor:pointer; transition:all 0.3s; box-shadow:0 2px 10px rgba(59,130,246,0.3); }
-        .btn-confirm:hover { transform:translateY(-2px); box-shadow:0 6px 20px rgba(59,130,246,0.4); }
+        .btn-confirm { width:100%; padding:16px; margin-top:24px; border:none; border-radius:10px; background:linear-gradient(135deg,#3b82f6,#2563eb); color:white; font-weight:600; font-size:16px; cursor:pointer; transition:0.3s; }
+        .btn-confirm:hover { transform:translateY(-2px); }
 
-        footer { text-align:center; padding:24px 20px; color:rgba(255,255,255,0.4); font-size:13px; border-top:1px solid rgba(255,255,255,0.06); margin-top:40px; }
+        footer { text-align:center; padding:24px 20px; color:rgba(255,255,255,0.4); font-size:13px; border-top:1px solid rgba(255,255,255,0.06); margin-top:20px; }
 
         @media(max-width:768px){
-            .navbar { padding:0 12px; height:auto; min-height:70px; flex-wrap:wrap; gap:8px; }
-            .logo img { height:65px; }
+            .nav-inner { padding:0 16px; height:60px; }
+            .logo-img { height:45px; }
+            .nav-links { display:none; }
             .hamburger { display:flex; }
-            .menu { position:fixed; top:0; right:-100%; width:80%; max-width:300px; height:100vh; background:rgba(15,23,42,0.98); flex-direction:column; padding:100px 24px 24px; gap:10px; transition:right 0.3s; z-index:999; border-left:1px solid rgba(255,255,255,0.08); }
-            .menu.open { right:0; }
-            .menu a { width:100%; text-align:center; padding:16px; font-size:16px; border-radius:12px; }
-            .usuario-info { position:fixed; bottom:0; left:0; width:100%; justify-content:center; padding:16px; background:rgba(15,23,42,0.98); z-index:999; border-top:1px solid rgba(255,255,255,0.1); }
-            .usuario-info span { display:none; }
-            .usuario-info button { width:100%; max-width:340px; padding:16px; font-size:16px; border-radius:12px; }
-            .container { padding:0 12px; margin:20px auto; }
-            .card { padding:20px; border-radius:14px; }
+            .nav-actions .usuario-btn { display:none; }
+            .container { margin:90px auto 30px; }
+            .card { padding:20px; }
             .card h1 { font-size:20px; }
             footer { padding:20px 16px; font-size:12px; }
         }
+        @media(max-width:480px){ .logo-img { height:38px; } .mobile-nav a { font-size:15px; } }
     </style>
 </head>
 <body>
-<nav class="navbar">
-    <a href="index.html" class="logo"><img src="img/Logo moderno InnovaT.png" alt="Innovatech"></a>
-    <div class="menu" id="menu">
+<nav id="navbar">
+    <div class="nav-inner">
+        <img src="img/Logo moderno InnovaT.png" alt="Innovatech" class="logo-img" onclick="location.href='index.html'">
+        <div class="nav-links">
+            <a href="index.html">Inicio</a>
+            <a href="nosotros.html">Nosotros</a>
+            <a href="mis_pedidos.html">Mis pedidos</a>
+        </div>
+        <div class="nav-actions">
+            <button class="usuario-btn" id="btn-auth" onclick="authAction()">Iniciar Sesion</button>
+            <button class="hamburger" onclick="toggleMobile()"><span></span><span></span><span></span></button>
+        </div>
+    </div>
+    <div class="mobile-nav" id="mobileNav">
         <a href="index.html">Inicio</a>
         <a href="nosotros.html">Nosotros</a>
         <a href="mis_pedidos.html">Mis pedidos</a>
+        <button class="usuario-btn" id="btn-auth-mob" onclick="authAction()">Iniciar Sesion</button>
     </div>
-    <div class="usuario-info">
-        <span id="user-name">Invitado</span>
-        <button id="btn-auth" onclick="authAction()">Iniciar Sesion</button>
-    </div>
-    <button class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></button>
 </nav>
 
 <div class="container">
@@ -79,13 +87,12 @@
 <footer><p>&copy; 2026 Innovatech - Todos los derechos reservados</p></footer>
 
 <script>
+function toggleMobile(){ document.getElementById('mobileNav').classList.toggle('open'); }
 const auth=localStorage.getItem('auth'),usuario=JSON.parse(localStorage.getItem('usuario'));
-const userName=document.getElementById('user-name'),btnAuth=document.getElementById('btn-auth');
-if(auth==='true'&&usuario){ userName.innerText=usuario.nombres;btnAuth.innerText="Cerrar sesion"; }
-else{ userName.innerText="Invitado";btnAuth.innerText="Iniciar sesion"; }
+const btn=document.getElementById('btn-auth'),btnMob=document.getElementById('btn-auth-mob');
+if(auth==='true'&&usuario){ btn.innerText="Cerrar sesion";btnMob.innerText="Cerrar sesion"; }
+else{ btn.innerText="Iniciar sesion";btnMob.innerText="Iniciar sesion"; }
 function authAction(){ if(auth==='true'){ localStorage.removeItem('auth');localStorage.removeItem('usuario');window.location.href="index.html"; }else{ window.location.href="login.html"; } }
-function toggleMenu(){ document.getElementById('menu').classList.toggle('open'); }
-window.addEventListener('scroll',function(){ document.querySelector('.navbar').classList.toggle('scrolled',window.scrollY>20); });
 
 if(auth!=='true'||!usuario){ alert("Debes iniciar sesion");window.location.href="login.html"; }
 document.getElementById('user-box').innerHTML=`<strong>Datos de Facturacion</strong><br><br>Nombre: ${usuario.nombres||''}<br>Apellidos: ${usuario.apellidos||''}<br>Celular: ${usuario.celular||''}<br>Direccion: ${usuario.direccion||''}`;
@@ -105,7 +112,7 @@ async function confirmarPedido(){
         const data=await response.json();
         if(data.ok){ localStorage.removeItem('carrito');localStorage.removeItem('pedido_actual');alert("Pedido confirmado! N° Venta: "+data.venta_id);window.location.href="index.html"; }
         else{ alert("Error al guardar venta"); }
-    }catch(e){ console.log(e);alert("Error de conexion"); }
+    }catch(e){ alert("Error de conexion"); }
 }
 </script>
 </body>

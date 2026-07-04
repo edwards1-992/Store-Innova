@@ -10,135 +10,102 @@
         * { margin:0; padding:0; box-sizing:border-box; font-family:'Inter',sans-serif; }
         body { min-height:100vh; background:linear-gradient(160deg,#0f172a 0%,#1e293b 50%,#334155 100%); color:white; }
 
-        /* NAVBAR */
-        .navbar {
-            width:100%; padding:0 40px; height:80px;
-            display:flex; justify-content:space-between; align-items:center;
-            background:rgba(255,255,255,0.06); backdrop-filter:blur(16px);
-            border-bottom:1px solid rgba(255,255,255,0.08); position:sticky; top:0; z-index:1000;
-            transition:all 0.3s ease;
+        #navbar {
+            position:fixed; top:0; left:0; right:0; z-index:1000;
+            background:rgba(15,23,42,0.92); backdrop-filter:blur(20px);
+            border-bottom:1px solid rgba(255,255,255,0.06);
         }
-        .navbar.scrolled { background:rgba(15,23,42,0.95); box-shadow:0 4px 30px rgba(0,0,0,0.4); }
-        .logo { display:flex; align-items:center; }
-        .logo img { height:85px; transition:0.3s; }
-        .logo:hover img { transform:scale(1.05); }
-        .menu { display:flex; gap:6px; }
-        .menu a {
-            text-decoration:none; color:rgba(255,255,255,0.85); padding:10px 20px; border-radius:8px;
-            background:rgba(255,255,255,0.08); transition:all 0.3s; font-size:14px; font-weight:500;
-            border:1px solid transparent;
-        }
-        .menu a:hover { background:rgba(59,130,246,0.15); border-color:rgba(59,130,246,0.3); color:white; transform:translateY(-1px); }
-        .usuario-info { display:flex; align-items:center; gap:14px; }
-        .usuario-info span { font-weight:600; font-size:14px; color:rgba(255,255,255,0.7); }
-        .usuario-info button {
-            padding:10px 22px; border:none; border-radius:8px; cursor:pointer;
-            background:linear-gradient(135deg,#3b82f6,#2563eb); color:white;
-            font-weight:600; font-size:13px; transition:all 0.3s;
-            box-shadow:0 2px 10px rgba(59,130,246,0.3);
-        }
-        .usuario-info button:hover { transform:translateY(-1px); box-shadow:0 4px 15px rgba(59,130,246,0.4); }
+        .nav-inner { display:flex; align-items:center; justify-content:space-between; padding:0 40px; height:80px; }
+        .logo-img { height:100px; width:auto; object-fit:contain; transition:0.3s; }
+        .logo-img:hover { transform:scale(1.04); filter:drop-shadow(0 0 10px rgba(59,130,246,0.3)); }
+        .nav-links { display:flex; align-items:center; gap:4px; }
+        .nav-links a { text-decoration:none; color:rgba(255,255,255,0.7); padding:10px 20px; border-radius:8px; font-size:14px; font-weight:500; transition:0.3s; }
+        .nav-links a:hover { color:white; background:rgba(255,255,255,0.08); }
+        .nav-actions { display:flex; align-items:center; gap:12px; }
+        .usuario-btn { padding:10px 22px; border:none; border-radius:8px; cursor:pointer; background:linear-gradient(135deg,#3b82f6,#2563eb); color:white; font-weight:600; font-size:13px; transition:0.3s; box-shadow:0 2px 10px rgba(59,130,246,0.3); white-space:nowrap; }
+        .usuario-btn:hover { transform:translateY(-1px); box-shadow:0 4px 15px rgba(59,130,246,0.4); }
         .hamburger { display:none; flex-direction:column; gap:5px; cursor:pointer; padding:8px; background:none; border:none; }
         .hamburger span { width:24px; height:2px; background:white; border-radius:2px; transition:0.3s; }
+        .mobile-nav { display:none; flex-direction:column; gap:4px; padding:16px 24px 20px; border-top:1px solid rgba(255,255,255,0.06); background:rgba(15,23,42,0.98); }
+        .mobile-nav.open { display:flex; }
+        .mobile-nav a { text-decoration:none; color:rgba(255,255,255,0.7); padding:14px 16px; border-radius:10px; font-size:16px; font-weight:500; transition:0.3s; }
+        .mobile-nav a:hover { color:white; background:rgba(255,255,255,0.08); }
+        .mobile-nav .usuario-btn { width:100%; text-align:center; margin-top:8px; }
 
-        /* HERO */
-        .hero { width:100%; text-align:center; padding:80px 20px 60px; }
+        .hero { width:100%; text-align:center; padding:120px 20px 60px; margin-top:80px; }
         .hero h1 { font-size:52px; font-weight:800; margin-bottom:16px; background:linear-gradient(135deg,#60a5fa,#a78bfa); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
         .hero p { font-size:18px; opacity:0.7; max-width:600px; margin:0 auto; line-height:1.6; }
 
-        /* PRODUCTOS */
         .productos-container { width:92%; max-width:1200px; margin:auto; padding:40px 0 60px; }
-        .productos-titulo { text-align:center; margin-bottom:40px; font-size:28px; font-weight:700; color:rgba(255,255,255,0.9); }
+        .productos-titulo { text-align:center; margin-bottom:40px; font-size:28px; font-weight:700; }
+
         .productos { display:grid; grid-template-columns:repeat(auto-fill,minmax(270px,1fr)); gap:24px; }
-        .producto {
-            background:rgba(255,255,255,0.05); border-radius:16px; overflow:hidden;
-            border:1px solid rgba(255,255,255,0.08); transition:all 0.3s;
-            backdrop-filter:blur(8px);
-        }
+        .producto { background:rgba(255,255,255,0.05); border-radius:16px; overflow:hidden; border:1px solid rgba(255,255,255,0.08); transition:all 0.3s; backdrop-filter:blur(8px); }
         .producto:hover { transform:translateY(-6px); border-color:rgba(59,130,246,0.3); box-shadow:0 20px 40px rgba(0,0,0,0.3); }
         .producto a { text-decoration:none; color:inherit; }
         .producto img { width:100%; height:220px; object-fit:cover; display:block; }
         .producto-info { padding:20px; }
-        .producto-info h3 { font-size:16px; font-weight:600; margin-bottom:6px; color:rgba(255,255,255,0.9); }
+        .producto-info h3 { font-size:16px; font-weight:600; margin-bottom:6px; }
         .producto-info p { font-size:13px; color:rgba(255,255,255,0.5); margin-bottom:12px; line-height:1.5; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
         .precio { font-size:22px; font-weight:700; color:#60a5fa; }
-        .producto button {
-            width:100%; padding:12px; margin-top:14px; border:none; border-radius:8px;
-            background:linear-gradient(135deg,#3b82f6,#2563eb); color:white;
-            font-weight:600; font-size:14px; cursor:pointer; transition:all 0.3s;
-            box-shadow:0 2px 10px rgba(59,130,246,0.2);
-        }
+        .producto button { width:100%; padding:12px; margin-top:14px; border:none; border-radius:8px; background:linear-gradient(135deg,#3b82f6,#2563eb); color:white; font-weight:600; font-size:14px; cursor:pointer; transition:0.3s; }
         .producto button:hover { box-shadow:0 4px 15px rgba(59,130,246,0.4); }
 
-        /* CARRITO */
-        .carrito-widget { position:fixed; top:100px; right:24px; z-index:1000; }
-        #carrito-icono {
-            background:rgba(255,255,255,0.08); color:white; padding:14px 18px; border-radius:12px;
-            cursor:pointer; font-weight:600; backdrop-filter:blur(10px);
-            border:1px solid rgba(255,255,255,0.1); transition:0.3s;
-        }
-        #carrito-icono:hover { background:rgba(59,130,246,0.2); border-color:rgba(59,130,246,0.3); }
-        #carrito-panel {
-            margin-top:10px; background:rgba(30,41,59,0.95); color:white; width:320px;
-            max-height:420px; overflow-y:auto; padding:20px; border-radius:14px;
-            backdrop-filter:blur(12px); border:1px solid rgba(255,255,255,0.08);
-            box-shadow:0 20px 40px rgba(0,0,0,0.4);
-        }
+        .carrito-widget { position:fixed; top:100px; right:24px; z-index:999; }
+        #carrito-icono { background:rgba(255,255,255,0.08); color:white; padding:14px 18px; border-radius:12px; cursor:pointer; font-weight:600; backdrop-filter:blur(10px); border:1px solid rgba(255,255,255,0.1); transition:0.3s; }
+        #carrito-icono:hover { background:rgba(59,130,246,0.2); }
+        #carrito-panel { margin-top:10px; background:rgba(30,41,59,0.95); color:white; width:320px; max-height:420px; overflow-y:auto; padding:20px; border-radius:14px; backdrop-filter:blur(12px); border:1px solid rgba(255,255,255,0.08); box-shadow:0 20px 40px rgba(0,0,0,0.4); }
         .oculto { display:none; }
 
         footer { text-align:center; padding:24px 20px; color:rgba(255,255,255,0.4); font-size:13px; border-top:1px solid rgba(255,255,255,0.06); margin-top:20px; }
 
-        /* RESPONSIVE */
         @media(max-width:768px){
-            .navbar { padding:0 12px; height:auto; min-height:70px; flex-wrap:wrap; gap:8px; }
-            .logo { flex:0 0 auto; }
-            .logo img { height:65px; }
+            .nav-inner { padding:0 16px; height:60px; }
+            .logo-img { height:45px; }
+            .nav-links { display:none; }
             .hamburger { display:flex; }
-            .menu {
-                position:fixed; top:0; right:-100%; width:80%; max-width:300px;
-                height:100vh; background:rgba(15,23,42,0.98); backdrop-filter:blur(16px);
-                flex-direction:column; padding:100px 24px 24px; gap:10px;
-                transition:right 0.3s ease; z-index:999;
-                border-left:1px solid rgba(255,255,255,0.08);
-            }
-            .menu.open { right:0; }
-            .menu a { width:100%; text-align:center; padding:16px; font-size:16px; border-radius:12px; }
-            .usuario-info { position:fixed; bottom:0; left:0; width:100%; justify-content:center; padding:16px; background:rgba(15,23,42,0.98); backdrop-filter:blur(16px); z-index:999; border-top:1px solid rgba(255,255,255,0.1); }
-            .usuario-info span { display:none; }
-            .usuario-info button { width:100%; max-width:340px; padding:16px; font-size:16px; border-radius:12px; }
-            .hero { padding:40px 16px 30px; }
-            .hero h1 { font-size:28px; line-height:1.2; }
-            .hero p { font-size:14px; line-height:1.5; }
+            .nav-actions .usuario-btn { display:none; }
+            .hero { padding:100px 16px 30px; margin-top:60px; }
+            .hero h1 { font-size:28px; }
+            .hero p { font-size:14px; }
             .productos-container { width:95%; padding:20px 0 80px; }
             .productos-titulo { font-size:22px; margin-bottom:20px; }
             .productos { grid-template-columns:1fr; gap:16px; }
-            .producto-info { padding:16px; }
-            .producto-info h3 { font-size:15px; }
-            .producto-info p { font-size:12px; }
-            .precio { font-size:20px; }
             .producto img { height:180px; }
+            .producto-info { padding:16px; }
             .carrito-widget { top:auto; bottom:90px; right:12px; }
-            #carrito-panel { width:calc(100vw - 24px); max-width:320px; right:0; }
+            #carrito-panel { width:calc(100vw - 24px); max-width:320px; }
             footer { padding:20px 16px; font-size:12px; }
+        }
+        @media(max-width:480px){
+            .hero h1 { font-size:24px; }
+            .logo-img { height:38px; }
+            .mobile-nav a { font-size:15px; padding:12px 14px; }
         }
     </style>
 </head>
 <body>
-<nav class="navbar">
-    <a href="index.html" class="logo"><img src="img/Logo moderno InnovaT.png" alt="Innovatech"></a>
-    <div class="menu" id="menu">
+<nav id="navbar">
+    <div class="nav-inner">
+        <img src="img/Logo moderno InnovaT.png" alt="Innovatech" class="logo-img" onclick="location.href='index.html'" style="cursor:pointer;">
+        <div class="nav-links">
+            <a href="index.html">Inicio</a>
+            <a href="nosotros.html">Nosotros</a>
+            <a id="link-registro-nav" href="registro.html">Registrarse</a>
+            <a href="mis_pedidos.html" id="link-mis-pedidos-nav" style="display:none;">Mis pedidos</a>
+        </div>
+        <div class="nav-actions">
+            <button class="usuario-btn" id="btn-auth" onclick="authAction()">Iniciar Sesion</button>
+            <button class="hamburger" onclick="toggleMobile()" aria-label="Menu"><span></span><span></span><span></span></button>
+        </div>
+    </div>
+    <div class="mobile-nav" id="mobileNav">
         <a href="index.html">Inicio</a>
         <a href="nosotros.html">Nosotros</a>
-        <a id="link-registro" href="registro.html">Registrarse</a>
-        <a href="mis_pedidos.html" id="link-mis-pedidos" style="display:none;">Mis pedidos</a>
+        <a id="link-registro-mob" href="registro.html">Registrarse</a>
+        <a href="mis_pedidos.html" id="link-mis-pedidos-mob" style="display:none;">Mis pedidos</a>
+        <button class="usuario-btn" id="btn-auth-mob" onclick="authAction()">Iniciar Sesion</button>
     </div>
-    <div class="usuario-info">
-        <span id="usuario-logeado">Invitado</span>
-        <button id="btn-auth" onclick="authAction()">Iniciar Sesion</button>
-    </div>
-    <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
-        <span></span><span></span><span></span>
-    </button>
 </nav>
 
 <section class="hero">
@@ -158,22 +125,31 @@
         <ul id="lista-carrito"></ul>
         <p id="mensaje-vacio">Sin productos</p>
         <p>Total: $<span id="total">0</span></p>
-        <button id="btn-pagar" onclick="irCheckout()" style="width:100%;margin-top:15px;padding:12px;border:none;border-radius:10px;background:linear-gradient(135deg,#3b82f6,#2563eb);color:white;font-weight:600;cursor:pointer;box-shadow:0 2px 10px rgba(59,130,246,0.3);">Pagar</button>
+        <button id="btn-pagar" onclick="irCheckout()" style="width:100%;margin-top:15px;padding:12px;border:none;border-radius:10px;background:linear-gradient(135deg,#3b82f6,#2563eb);color:white;font-weight:600;cursor:pointer;">Pagar</button>
     </div>
 </div>
 
 <footer><p>&copy; 2026 Innovatech - Todos los derechos reservados</p></footer>
 
 <script>
+function toggleMobile(){ document.getElementById('mobileNav').classList.toggle('open'); }
 function irLogin(){ window.location.href='login.html'; }
 function logout(){ localStorage.removeItem('auth');localStorage.removeItem('usuario');alert('Sesion cerrada');window.location.href='index.html'; }
 function authAction(){ localStorage.getItem('auth')==='true'?logout():irLogin(); }
-function toggleMenu(){ document.getElementById('menu').classList.toggle('open'); }
 const auth=localStorage.getItem('auth'),usuario=JSON.parse(localStorage.getItem('usuario'));
-const label=document.getElementById('usuario-logeado'),btn=document.getElementById('btn-auth'),lp=document.getElementById('link-mis-pedidos');
-if(auth==='true'&&usuario){ label.innerText='Bienvenido, '+usuario.nombres;btn.innerText='Cerrar Sesion';if(lp)lp.style.display='inline-block'; }
-else{ label.innerText='Invitado';btn.innerText='Iniciar Sesion';if(lp)lp.style.display='none'; }
-window.addEventListener('scroll',function(){ document.querySelector('.navbar').classList.toggle('scrolled',window.scrollY>20); });
+const labelDesktop=document.getElementById('btn-auth'),labelMobile=document.getElementById('btn-auth-mob');
+const linkMob=document.getElementById('link-mis-pedidos-mob'),linkNav=document.getElementById('link-mis-pedidos-nav');
+const linkRegMob=document.getElementById('link-registro-mob'),linkRegNav=document.getElementById('link-registro-nav');
+if(auth==='true'&&usuario){
+    labelDesktop.innerText='Cerrar Sesion';labelMobile.innerText='Cerrar Sesion';
+    if(linkMob)linkMob.style.display='inline-block';if(linkNav)linkNav.style.display='inline-block';
+    if(linkRegMob)linkRegMob.style.display='none';if(linkRegNav)linkRegNav.style.display='none';
+}else{
+    labelDesktop.innerText='Iniciar Sesion';labelMobile.innerText='Iniciar Sesion';
+    if(linkMob)linkMob.style.display='none';if(linkNav)linkNav.style.display='none';
+    if(linkRegMob)linkRegMob.style.display='inline-block';if(linkRegNav)linkRegNav.style.display='inline-block';
+}
+window.addEventListener('scroll',function(){ document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>20); });
 
 async function cargarProductos(){
     try{
@@ -182,18 +158,7 @@ async function cargarProductos(){
         const contenedor=document.getElementById('contenedor-productos');
         contenedor.innerHTML='';
         productos.forEach(p=>{
-            contenedor.innerHTML+=`
-                <div class="producto">
-                    <a href="producto.html?nombre=${encodeURIComponent(p.nombre)}&precio=${p.precio}&img=${encodeURIComponent(p.imagen)}&descripcion=${encodeURIComponent(p.descripcion)}">
-                        <img src="img/${p.imagen}" alt="${p.nombre}" loading="lazy">
-                        <div class="producto-info">
-                            <h3>${p.nombre}</h3>
-                            <p>${p.descripcion}</p>
-                            <div class="precio">$${p.precio}</div>
-                            <button type="button">Ver Producto</button>
-                        </div>
-                    </a>
-                </div>`;
+            contenedor.innerHTML+=`<div class="producto"><a href="producto.html?nombre=${encodeURIComponent(p.nombre)}&precio=${p.precio}&img=${encodeURIComponent(p.imagen)}&descripcion=${encodeURIComponent(p.descripcion)}"><img src="img/${p.imagen}" alt="${p.nombre}" loading="lazy"><div class="producto-info"><h3>${p.nombre}</h3><p>${p.descripcion}</p><div class="precio">$${p.precio}</div><button type="button">Ver Producto</button></div></a></div>`;
         });
     }catch(e){ console.log('Error:',e); }
 }
