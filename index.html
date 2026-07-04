@@ -2,460 +2,459 @@
 <html lang="es">
 
 <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Innovatech</title>
-
+    <title>InnovaTech</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-
-        *{
-            margin:0;
-            padding:0;
-            box-sizing:border-box;
-            font-family:Arial, sans-serif;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', Arial, sans-serif;
         }
 
-        body{
-            min-height:100vh;
-            background: linear-gradient(135deg, #667eea, #9d5cde);
-            color:white;
+        body {
+            min-height: 100vh;
+            background: #f4f6fb;
+            color: #1a1a2e;
         }
 
-        /* =========================================
-           NAVBAR TIPO AMAZON (STICKY + SCROLL)
-        ========================================= */
-
-        .navbar{
-
-            width:100%;
-            padding:20px 40px;
-
-            display:flex;
-            justify-content:space-between;
-            align-items:center;
-
-            background: rgba(255,255,255,0.10);
-            backdrop-filter: blur(10px);
-
+        .navbar {
+            width: 100%;
+            padding: 0 40px;
+            height: 72px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.06);
             position: sticky;
             top: 0;
             z-index: 1000;
-
             transition: all 0.3s ease;
         }
 
-        /* efecto al hacer scroll */
-        .navbar.scrolled{
-            background: rgba(20,20,30,0.95);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.35);
+        .navbar.scrolled {
+            background: rgba(255, 255, 255, 0.96);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
         }
 
-        .logo{
-            font-size:28px;
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 22px;
+            font-weight: 800;
+            color: #1a1a2e;
+            text-decoration: none;
         }
 
-        .menu{
-            display:flex;
-            gap:15px;
+        .logo img {
+            height: 38px;
         }
 
-        .menu a{
-            text-decoration:none;
-            color:white;
-            padding:12px 20px;
-            border-radius:8px;
-            background: rgba(255,255,255,0.15);
-            transition:0.3s;
+        .menu {
+            display: flex;
+            gap: 4px;
         }
 
-        .menu a:hover{
-            background: rgba(255,255,255,0.25);
-            transform: translateY(-2px);
+        .menu a {
+            text-decoration: none;
+            color: #4a4a6a;
+            padding: 10px 18px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.2s;
         }
 
-        .usuario-info{
-            display:flex;
-            align-items:center;
-            gap:12px;
+        .menu a:hover {
+            background: #f0f2ff;
+            color: #4f46e5;
         }
 
-        .usuario-info span{
-            font-weight:bold;
+        .usuario-info {
+            display: flex;
+            align-items: center;
+            gap: 12px;
         }
 
-        .usuario-info button{
-            padding:10px 18px;
-            border:none;
-            border-radius:8px;
-            cursor:pointer;
-            background:white;
-            color:#667eea;
-            font-weight:bold;
+        .usuario-info span {
+            font-size: 13px;
+            font-weight: 600;
+            color: #4a4a6a;
         }
 
-        /* =========================================
-           HERO
-        ========================================= */
-
-        .hero{
-            width:100%;
-            text-align:center;
-            padding:60px 20px;
+        .usuario-info button {
+            padding: 8px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            background: #4f46e5;
+            color: white;
+            font-weight: 600;
+            font-size: 13px;
+            transition: all 0.2s;
         }
 
-        .hero h1{
-            font-size:50px;
-            margin-bottom:15px;
+        .usuario-info button:hover {
+            background: #4338ca;
+            transform: translateY(-1px);
         }
 
-        .hero p{
-            font-size:18px;
-            opacity:0.9;
+        .hero {
+            text-align: center;
+            padding: 80px 20px 60px;
         }
 
-        /* =========================================
-           PRODUCTOS
-        ========================================= */
-
-        .productos-container{
-            width:90%;
-            margin:auto;
-            padding-bottom:50px;
+        .hero h1 {
+            font-size: 48px;
+            font-weight: 800;
+            color: #1a1a2e;
+            margin-bottom: 12px;
         }
 
-        .productos-titulo{
-            text-align:center;
-            margin-bottom:30px;
-            font-size:32px;
+        .hero h1 span {
+            color: #4f46e5;
         }
 
-        .productos{
-            display:grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap:25px;
+        .hero p {
+            font-size: 18px;
+            color: #6b7280;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
         }
 
-        .producto{
-            background:white;
-            border-radius:15px;
-            overflow:hidden;
-            box-shadow:0 10px 25px rgba(0,0,0,0.2);
-            transition:0.3s;
+        .productos-container {
+            width: 92%;
+            max-width: 1280px;
+            margin: auto;
+            padding-bottom: 80px;
         }
 
-        .producto:hover{
-            transform: translateY(-5px);
+        .productos-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 28px;
         }
 
-        .producto img{
-            width:100%;
-            height:220px;
-            object-fit:cover;
+        .productos-titulo {
+            font-size: 24px;
+            font-weight: 700;
+            color: #1a1a2e;
         }
 
-        .producto-info{
-            padding:20px;
-            color:#333;
+        .productos {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 24px;
         }
 
-        .precio{
-            font-size:22px;
-            font-weight:bold;
-            color:#667eea;
+        .producto {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+            transition: all 0.3s;
+            border: 1px solid #f0f0f5;
         }
 
-        .producto button{
-            width:100%;
-            padding:12px;
-            margin-top:15px;
-            border:none;
-            border-radius:8px;
-            background:#667eea;
-            color:white;
-            cursor:pointer;
+        .producto:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 40px rgba(79, 70, 229, 0.10);
+            border-color: #e0e0f0;
         }
 
-        /* =========================================
-           CARRITO
-        ========================================= */
-
-        .carrito-widget{
-            position:fixed;
-            top:140px;
-            right:20px;
-            z-index:1000;
+        .producto a {
+            text-decoration: none;
+            color: inherit;
         }
 
-        #carrito-icono{
-            background:white;
-            color:#667eea;
-            padding:15px 20px;
-            border-radius:12px;
-            cursor:pointer;
-            font-weight:bold;
+        .producto img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            background: #f8f9fc;
         }
 
-        #carrito-panel{
-            margin-top:10px;
-            background:white;
-            color:#333;
-            width:320px;
-            max-height:400px;
-            overflow-y:auto;
-            padding:20px;
-            border-radius:15px;
+        .producto-info {
+            padding: 20px;
         }
 
-        .oculto{
-            display:none;
+        .producto-info h3 {
+            font-size: 16px;
+            font-weight: 600;
+            color: #1a1a2e;
+            margin-bottom: 6px;
         }
 
-        /* =========================================
-           FOOTER
-        ========================================= */
-
-        footer{
-            text-align:center;
-            padding:20px;
-            background: rgba(0,0,0,0.2);
-            margin-top:40px;
+        .producto-info p {
+            font-size: 13px;
+            color: #9ca3af;
+            line-height: 1.4;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
         }
 
+        .precio {
+            font-size: 22px;
+            font-weight: 700;
+            color: #4f46e5;
+            margin: 12px 0;
+        }
+
+        .producto button {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 10px;
+            background: #4f46e5;
+            color: white;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .producto button:hover {
+            background: #4338ca;
+        }
+
+        .carrito-widget {
+            position: fixed;
+            top: 90px;
+            right: 24px;
+            z-index: 1000;
+        }
+
+        #carrito-icono {
+            background: white;
+            color: #4f46e5;
+            padding: 14px 20px;
+            border-radius: 12px;
+            cursor: pointer;
+            font-weight: 600;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            border: 1px solid #f0f0f5;
+            transition: all 0.2s;
+        }
+
+        #carrito-icono:hover {
+            box-shadow: 0 8px 24px rgba(79, 70, 229, 0.15);
+        }
+
+        #carrito-panel {
+            margin-top: 10px;
+            background: white;
+            color: #1a1a2e;
+            width: 340px;
+            max-height: 440px;
+            overflow-y: auto;
+            padding: 20px;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
+            border: 1px solid #f0f0f5;
+        }
+
+        .oculto {
+            display: none;
+        }
+
+        #carrito-panel h3 {
+            font-size: 18px;
+            margin-bottom: 16px;
+        }
+
+        #mensaje-vacio {
+            color: #9ca3af;
+            font-size: 14px;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        #carrito-panel p:not(#mensaje-vacio) {
+            margin-top: 16px;
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        #carrito-panel button {
+            width: 100%;
+            margin-top: 12px;
+            padding: 12px;
+            border: none;
+            border-radius: 10px;
+            background: #4f46e5;
+            color: white;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        #carrito-panel button:hover {
+            background: #4338ca;
+        }
+
+        footer {
+            text-align: center;
+            padding: 32px 20px;
+            color: #9ca3af;
+            font-size: 14px;
+            border-top: 1px solid #f0f0f5;
+            margin-top: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 0 16px;
+            }
+            .menu a {
+                padding: 8px 12px;
+                font-size: 12px;
+            }
+            .hero h1 {
+                font-size: 32px;
+            }
+            .productos-container {
+                width: 96%;
+            }
+            #carrito-panel {
+                width: 300px;
+                right: 8px;
+            }
+        }
     </style>
-
 </head>
 
 <body>
 
-<!-- =========================================
-     NAVBAR
-========================================== -->
-
 <nav class="navbar">
-
-    <h2 class="logo">Innovatech</h2>
-
+    <a href="index.html" class="logo">
+        <img src="img/LOGO_INNOVATECH_2.png" alt="InnovaTech">
+        InnovaTech
+    </a>
     <div class="menu">
         <a href="index.html">Inicio</a>
         <a href="nosotros.html">Nosotros</a>
         <a id="link-registro" href="registro.html">Registrarse</a>
-        <a href="mis_pedidos.html" id="link-mis-pedidos" style="display:none;">
-            Mis pedidos
-        </a>
+        <a href="mis_pedidos.html" id="link-mis-pedidos" style="display:none;">Mis pedidos</a>
     </div>
-
     <div class="usuario-info">
-
         <span id="usuario-logeado">Invitado</span>
-
-        <button id="btn-auth" onclick="authAction()">
-            Iniciar Sesión
-        </button>
-
+        <button id="btn-auth" onclick="authAction()">Iniciar Sesión</button>
     </div>
-
 </nav>
 
-<!-- =========================================
-     HERO
-========================================== -->
-
 <section class="hero">
-
-    <h1>Innovatech</h1>
-
+    <h1>Innovación <span>sin límites</span></h1>
     <p>Equipos tecnológicos de alto rendimiento para gamers, profesionales y empresas.</p>
-
 </section>
-
-<!-- =========================================
-     PRODUCTOS
-========================================== -->
 
 <section class="productos-container">
-
-    <h2 class="productos-titulo">Equipos y Accesorios</h2>
-
+    <div class="productos-header">
+        <h2 class="productos-titulo">Productos destacados</h2>
+    </div>
     <div class="productos" id="contenedor-productos"></div>
-
 </section>
 
-<!-- =========================================
-     CARRITO
-========================================== -->
-
 <div class="carrito-widget">
-
     <div id="carrito-icono">
         🛒 <span id="carrito-contador">0</span>
     </div>
-
     <div id="carrito-panel" class="oculto">
-
-        <h3>Carrito</h3>
-
+        <h3>Tu carrito</h3>
         <ul id="lista-carrito"></ul>
-
-        <p id="mensaje-vacio">Sin productos</p>
-
+        <p id="mensaje-vacio">No hay productos en tu carrito</p>
         <p>Total: $<span id="total">0</span></p>
-
-        <button id="btn-pagar" onclick="irCheckout()"
-            style="
-                width:100%;
-                margin-top:15px;
-                padding:12px;
-                border:none;
-                border-radius:10px;
-                background:#667eea;
-                color:white;
-                font-weight:bold;
-                cursor:pointer;
-            ">
-            Pagar
-        </button>
-
+        <button onclick="irCheckout()">Proceder al pago</button>
     </div>
-
 </div>
 
-<!-- =========================================
-     FOOTER
-========================================== -->
-
 <footer>
-    <p>© 2026 Innovatech - Todos los derechos reservados</p>
+    <p>© 2026 InnovaTech — Todos los derechos reservados</p>
 </footer>
 
-<!-- =========================================
-     SCRIPTS
-========================================== -->
-
 <script>
-
-// =========================
-// SESIÓN
-// =========================
-
-function irLogin(){
+function irLogin() {
     window.location.href = 'login.html';
 }
 
-function logout(){
+function logout() {
     localStorage.removeItem('auth');
     localStorage.removeItem('usuario');
-
     alert('Sesión cerrada correctamente');
     window.location.href = 'index.html';
 }
 
-function authAction(){
-
+function authAction() {
     const auth = localStorage.getItem('auth');
-
-    if(auth === 'true'){
+    if (auth === 'true') {
         logout();
-    }else{
+    } else {
         irLogin();
     }
 }
 
-// =========================
-// USUARIO
-// =========================
-
 const auth = localStorage.getItem('auth');
 const usuario = JSON.parse(localStorage.getItem('usuario'));
-
 const label = document.getElementById('usuario-logeado');
 const btn = document.getElementById('btn-auth');
-
 const linkPedidos = document.getElementById('link-mis-pedidos');
 
-if(auth === 'true' && usuario){
-
+if (auth === 'true' && usuario) {
     label.innerText = 'Bienvenido, ' + usuario.nombres;
     btn.innerText = 'Cerrar Sesión';
-
-    if (linkPedidos) {
-        linkPedidos.style.display = 'inline-block';
-    }
-
-}else{
-
+    if (linkPedidos) linkPedidos.style.display = 'inline-block';
+} else {
     label.innerText = 'Invitado';
     btn.innerText = 'Iniciar Sesión';
-
-    if (linkPedidos) {
-        linkPedidos.style.display = 'none';
-    }
+    if (linkPedidos) linkPedidos.style.display = 'none';
 }
 
-
-
 window.addEventListener('scroll', function () {
-
     const navbar = document.querySelector('.navbar');
-
     if (window.scrollY > 20) {
         navbar.classList.add('scrolled');
     } else {
         navbar.classList.remove('scrolled');
     }
-
 });
 
-// =========================
-// PRODUCTOS
-// =========================
-
-async function cargarProductos(){
-
-    try{
-
+async function cargarProductos() {
+    try {
         const response = await fetch('/productos');
         const productos = await response.json();
-
         const contenedor = document.getElementById('contenedor-productos');
         contenedor.innerHTML = '';
-
         productos.forEach(producto => {
-
             contenedor.innerHTML += `
-
                 <div class="producto">
-
                     <a href="producto.html?nombre=${encodeURIComponent(producto.nombre)}&precio=${producto.precio}&img=${encodeURIComponent(producto.imagen)}&descripcion=${encodeURIComponent(producto.descripcion)}">
-
-                        <img src="img/${producto.imagen}" alt="${producto.nombre}">
-
+                        <img src="img/${producto.imagen}" alt="${producto.nombre}" loading="lazy">
                         <div class="producto-info">
-
                             <h3>${producto.nombre}</h3>
                             <p>${producto.descripcion}</p>
-
                             <div class="precio">$${producto.precio}</div>
-
-                            <button type="button">Ver Producto</button>
-
+                            <button type="button">Ver producto</button>
                         </div>
-
                     </a>
-
                 </div>
-
             `;
         });
-
-    }catch(error){
+    } catch (error) {
         console.log('Error cargando productos:', error);
     }
 }
 
 cargarProductos();
-
 </script>
 
 <script src="js/carrito.js"></script>
