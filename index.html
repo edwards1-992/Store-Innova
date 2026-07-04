@@ -60,8 +60,8 @@
         footer { text-align:center; padding:24px 20px; color:rgba(255,255,255,0.4); font-size:13px; border-top:1px solid rgba(255,255,255,0.06); margin-top:20px; }
 
         @media(max-width:768px){
-            .nav-inner { padding:0 16px; height:60px; }
-            .logo-img { height:45px; }
+            .nav-inner { padding:0 16px; height:auto; min-height:75px; }
+            .logo-img { height:65px; }
             .nav-links { display:none; }
             .hamburger { display:flex; }
             .nav-actions .usuario-btn { display:none; }
@@ -79,7 +79,8 @@
         }
         @media(max-width:480px){
             .hero h1 { font-size:24px; }
-            .logo-img { height:38px; }
+            .nav-inner { min-height:65px; }
+            .logo-img { height:55px; }
             .mobile-nav a { font-size:15px; padding:12px 14px; }
         }
     </style>
