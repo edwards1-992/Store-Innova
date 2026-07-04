@@ -7,26 +7,32 @@ const sqlConfig = {
         'Server=localhost\\SQLEXPRESS;' +
         'Database=tiendaOnline;' +
         'Trusted_Connection=Yes;' +
-        'TrustServerCertificate=Yes;'
+        'TrustServerCertificate=Yes;',
+    options: {
+        connectTimeout: 10000,
+    }
 };
 
 const mysqlPool = mysql.createPool({
     host: process.env.MYSQLHOST || 'localhost',
     port: process.env.MYSQLPORT || 3306,
     user: process.env.MYSQLUSER || 'root',
-    password: process.env.MYSQLPASSWORD || '',
+    password: process.env.MYSQLPASSWORD || 'SSiQPmZkPetqvrkceKKvfxoMKqUgVcRh',
     database: process.env.MYSQLDATABASE || 'tiendaOnline',
     waitForConnections: true,
     connectionLimit: 10,
+    connectTimeout: 10000,
 });
 
 async function migrar() {
     try {
+        console.log('Conectando a SQL Server...');
         await sql.connect(sqlConfig);
-        console.log('Conectado a SQL Server');
+        console.log('OK: Conectado a SQL Server');
 
+        console.log('Conectando a MySQL...');
         const mysqlConn = await mysqlPool.getConnection();
-        console.log('Conectado a MySQL');
+        console.log('OK: Conectado a MySQL');
 
         const tablas = [
             { nombre: 'productos', columnas: ['nombre', 'descripcion', 'precio', 'imagen', 'categoria', 'stock', 'estado', 'fecha_creacion'] },
