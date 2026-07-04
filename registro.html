@@ -3,26 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registrarse — InnovaTech</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <title>Registro</title>
     <style>
-        * { margin:0; padding:0; box-sizing:border-box; font-family:'Inter',sans-serif; }
-        body { min-height:100vh; display:flex; align-items:center; justify-content:center; background:#f4f6fb; }
-        .register-card { width:420px; background:white; padding:36px; border-radius:16px; border:1px solid #f0f0f5; box-shadow:0 1px 3px rgba(0,0,0,0.06); }
-        .register-card img { height:44px; display:block; margin:0 auto 20px; }
-        .register-card h2 { text-align:center; font-size:22px; font-weight:700; margin-bottom:24px; }
-        .register-card input { width:100%; padding:12px 14px; margin-bottom:12px; border:1px solid #e5e7eb; border-radius:10px; font-size:14px; background:#f9fafb; }
-        .register-card input:focus { outline:none; border-color:#3b82f6; background:white; }
-        .register-card button { width:100%; padding:14px; border:none; border-radius:10px; background:#3b82f6; color:white; font-size:15px; font-weight:600; cursor:pointer; transition:all 0.2s; }
-        .register-card button:hover { background:#4338ca; }
-        .mensaje { text-align:center; margin-top:14px; font-size:14px; color:#6b7280; }
+        * { margin:0; padding:0; box-sizing:border-box; font-family:Arial; }
+        body { min-height:100vh; display:flex; justify-content:center; align-items:center; background:linear-gradient(135deg,#667eea,#764ba2); }
+        .card { width:400px; max-width:90%; background:white; padding:30px; border-radius:15px; }
+        .card h2 { text-align:center; margin-bottom:20px; }
+        .card input { width:100%; padding:12px; margin-bottom:12px; border:1px solid #ccc; border-radius:8px; }
+        .card button { width:100%; padding:12px; border:none; border-radius:8px; background:#667eea; color:white; cursor:pointer; }
+        .mensaje { margin-top:15px; text-align:center; }
     </style>
 </head>
 <body>
-<div class="register-card">
-    <img src="img/Logo moderno InnovaT.png" alt="InnovaTech">
-    <h2>Registrarse</h2>
+<div class="card">
+    <h2>Registro</h2>
     <input type="text" id="nombres" placeholder="Nombres">
     <input type="text" id="apellidos" placeholder="Apellidos">
     <input type="text" id="cedula" placeholder="Cedula" maxlength="16">
@@ -39,33 +33,17 @@ txtCedula.addEventListener('input',function(){
     let v=this.value.toUpperCase().replace(/[^0-9A-Z]/g,'');
     let letra='';
     if(/[A-Z]$/.test(v)){ letra=v.slice(-1); v=v.slice(0,-1); }
-    v=v.substring(0,13);
-    let r='';
-    if(v.length<=3) r=v;
-    else if(v.length<=9) r=v.substring(0,3)+'-'+v.substring(3);
-    else r=v.substring(0,3)+'-'+v.substring(3,9)+'-'+v.substring(9,13);
+    v=v.substring(0,13);let r='';
+    if(v.length<=3)r=v; else if(v.length<=9)r=v.substring(0,3)+'-'+v.substring(3); else r=v.substring(0,3)+'-'+v.substring(3,9)+'-'+v.substring(9,13);
     this.value=r+letra;
 });
 const txtCelular=document.getElementById('celular');
-txtCelular.addEventListener('input',function(){
-    let v=this.value.replace(/\D/g,'').substring(0,8);
-    if(v.length>4) v=v.substring(0,4)+'-'+v.substring(4);
-    this.value=v;
-});
+txtCelular.addEventListener('input',function(){ let v=this.value.replace(/\D/g,'').substring(0,8); if(v.length>4)v=v.substring(0,4)+'-'+v.substring(4); this.value=v; });
 async function registrar(){
-    const data={
-        nombres:document.getElementById('nombres').value,
-        apellidos:document.getElementById('apellidos').value,
-        cedula:document.getElementById('cedula').value,
-        celular:document.getElementById('celular').value,
-        direccion:document.getElementById('direccion').value,
-        usuario:document.getElementById('usuario').value,
-        password:document.getElementById('password').value
-    };
+    const data={nombres:document.getElementById('nombres').value,apellidos:document.getElementById('apellidos').value,cedula:document.getElementById('cedula').value,celular:document.getElementById('celular').value,direccion:document.getElementById('direccion').value,usuario:document.getElementById('usuario').value,password:document.getElementById('password').value};
     const response=await fetch('/registro',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});
     const result=await response.json();
-    if(result.ok){ alert('Usuario registrado correctamente'); window.location.href='login.html'; }
-    else{ alert(result.mensaje); }
+    if(result.ok){ alert('Usuario registrado correctamente');window.location.href='login.html'; }else{ alert(result.mensaje); }
 }
 </script>
 </body>

@@ -6,7 +6,7 @@ const descripcion = params.get("descripcion");
 
 document.getElementById("producto-nombre").textContent = nombre;
 document.getElementById("producto-img").src = "img/" + img;
-document.getElementById("producto-precio").textContent = "$" + parseFloat(precio).toFixed(2);
+document.getElementById("producto-precio").textContent = "Precio: $" + precio;
 if (descripcion) {
     document.getElementById("producto-descripcion").textContent = decodeURIComponent(descripcion);
 }
