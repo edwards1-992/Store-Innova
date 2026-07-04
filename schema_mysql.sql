@@ -1,6 +1,12 @@
 CREATE DATABASE IF NOT EXISTS tiendaOnline;
 USE tiendaOnline;
 
+DROP TABLE IF EXISTS detalle_ventas;
+DROP TABLE IF EXISTS ventas;
+DROP TABLE IF EXISTS usuarios_clientes;
+DROP TABLE IF EXISTS usuarios;
+DROP TABLE IF EXISTS productos;
+
 CREATE TABLE productos (
     producto_id INT AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(200) NOT NULL,
