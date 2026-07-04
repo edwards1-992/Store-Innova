@@ -8,23 +8,25 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         * { margin:0; padding:0; box-sizing:border-box; font-family:'Inter',sans-serif; }
-        body { min-height:100vh; background:#f4f6fb; color:#1a1a2e; }
+        body { min-height:100vh; background:linear-gradient(135deg,#667eea,#9d5cde); color:white; }
         .navbar {
-            width:100%; padding:0 40px; height:76px;
+            width:100%; padding:20px 40px;
             display:flex; justify-content:space-between; align-items:center;
-            background:rgba(255,255,255,0.85); backdrop-filter:blur(16px);
+            background:rgba(255,255,255,0.10); backdrop-filter:blur(10px);
             border-bottom:1px solid rgba(0,0,0,0.06); position:sticky; top:0; z-index:1000;
-            transition:all 0.2s;
+            transition:all 0.3s ease;
         }
+        .navbar.scrolled { background:rgba(20,20,30,0.95); box-shadow:0 10px 25px rgba(0,0,0,0.35); }
+        .logo { display:flex; align-items:center; }
         .logo img { height:52px; }
-        .menu { display:flex; gap:4px; }
-        .menu a { text-decoration:none; color:#4a4a6a; padding:10px 18px; border-radius:8px; font-size:14px; font-weight:500; transition:all 0.2s; }
-        .menu a:hover { background:#f0f2ff; color:#4f46e5; }
+        .menu { display:flex; gap:15px; }
+        .menu a { text-decoration:none; color:white; padding:12px 20px; border-radius:8px; background:rgba(255,255,255,0.15); transition:0.3s; font-size:14px; font-weight:500; }
+        .menu a:hover { background:rgba(255,255,255,0.25); transform:translateY(-2px); }
         .usuario-info { display:flex; align-items:center; gap:12px; }
-        .usuario-info span { font-size:13px; font-weight:600; color:#4a4a6a; }
-        .usuario-info button { padding:8px 20px; border:none; border-radius:8px; cursor:pointer; background:#4f46e5; color:white; font-weight:600; font-size:13px; transition:all 0.2s; }
-        .usuario-info button:hover { background:#4338ca; }
-        .hero { width:100%; text-align:center; padding:50px 20px; background:linear-gradient(135deg,#4f46e5,#7c3aed); color:white; }
+        .usuario-info span { font-weight:bold; font-size:14px; }
+        .usuario-info button { padding:10px 18px; border:none; border-radius:8px; cursor:pointer; background:white; color:#667eea; font-weight:bold; font-size:13px; transition:all 0.2s; }
+        .usuario-info button:hover { background:#f0f2ff; }
+        .hero { width:100%; text-align:center; padding:50px 20px; color:white; }
         .hero h1 { font-size:40px; font-weight:800; margin-bottom:8px; }
         .hero p { font-size:16px; opacity:0.9; }
         .cards { width:92%; max-width:1100px; margin:50px auto; display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:28px; }
@@ -34,7 +36,7 @@
         .card-body { padding:24px; }
         .card-body h3 { font-size:18px; font-weight:600; margin-bottom:8px; }
         .card-body p { font-size:14px; color:#6b7280; line-height:1.6; }
-        footer { text-align:center; padding:28px 20px; color:#9ca3af; font-size:14px; border-top:1px solid #f0f0f5; margin-top:20px; }
+        footer { text-align:center; padding:28px 20px; color:rgba(255,255,255,0.7); font-size:14px; margin-top:20px; background:rgba(0,0,0,0.2); }
     </style>
 </head>
 <body>
