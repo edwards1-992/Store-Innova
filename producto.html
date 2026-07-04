@@ -8,24 +8,24 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         * { margin:0; padding:0; box-sizing:border-box; font-family:'Inter',sans-serif; }
-        body { min-height:100vh; background:linear-gradient(135deg,#667eea,#9d5cde); color:white; }
+        body { min-height:100vh; background:linear-gradient(135deg,#0f172a,#1e293b); color:white; }
         .navbar {
-            width:100%; padding:20px 40px;
+            width:100%; padding:10px 40px;
             display:flex; justify-content:space-between; align-items:center;
-            background:rgba(255,255,255,0.10); backdrop-filter:blur(10px);
-            border-bottom:1px solid rgba(0,0,0,0.06); position:sticky; top:0; z-index:1000;
+            background:rgba(255,255,255,0.08); backdrop-filter:blur(12px);
+            border-bottom:1px solid rgba(255,255,255,0.06); position:sticky; top:0; z-index:1000;
             transition:all 0.3s ease;
         }
-        .navbar.scrolled { background:rgba(20,20,30,0.95); box-shadow:0 10px 25px rgba(0,0,0,0.35); }
+        .navbar.scrolled { background:rgba(15,23,42,0.95); box-shadow:0 10px 25px rgba(0,0,0,0.5); }
         .logo { display:flex; align-items:center; }
-        .logo img { height:60px; }
-        .menu { display:flex; gap:15px; }
-        .menu a { text-decoration:none; color:white; padding:12px 20px; border-radius:8px; background:rgba(255,255,255,0.15); transition:0.3s; font-size:14px; font-weight:500; }
-        .menu a:hover { background:rgba(255,255,255,0.25); transform:translateY(-2px); }
+        .logo img { height:85px; }
+        .menu { display:flex; gap:6px; }
+        .menu a { text-decoration:none; color:white; padding:10px 18px; border-radius:8px; background:rgba(255,255,255,0.1); transition:0.3s; font-size:14px; font-weight:500; }
+        .menu a:hover { background:rgba(59,130,246,0.3); transform:translateY(-2px); }
         .usuario-info { display:flex; align-items:center; gap:12px; }
-        .usuario-info span { font-weight:bold; font-size:14px; }
-        .usuario-info button { padding:10px 18px; border:none; border-radius:8px; cursor:pointer; background:white; color:#667eea; font-weight:bold; font-size:13px; transition:all 0.2s; }
-        .usuario-info button:hover { background:#f0f2ff; }
+        .usuario-info span { font-weight:600; font-size:14px; color:rgba(255,255,255,0.8); }
+        .usuario-info button { padding:9px 18px; border:none; border-radius:8px; cursor:pointer; background:#3b82f6; color:white; font-weight:600; font-size:13px; transition:all 0.2s; }
+        .usuario-info button:hover { background:#2563eb; }
 
         .producto-wrap { width:92%; max-width:1000px; margin:50px auto; display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:start; }
         .producto-img { background:white; border-radius:16px; padding:24px; border:1px solid #f0f0f5; box-shadow:0 1px 3px rgba(0,0,0,0.06); }
@@ -33,11 +33,11 @@
         .producto-detalle { background:white; border-radius:16px; padding:32px; border:1px solid #f0f0f5; box-shadow:0 1px 3px rgba(0,0,0,0.06); }
         .producto-detalle h1 { font-size:28px; font-weight:700; margin-bottom:12px; }
         .producto-detalle .desc { color:#6b7280; font-size:15px; line-height:1.6; margin-bottom:20px; }
-        .producto-detalle .precio { font-size:36px; font-weight:800; color:#667eea; margin-bottom:24px; }
+        .producto-detalle .precio { font-size:36px; font-weight:800; color:#3b82f6; margin-bottom:24px; }
         .producto-detalle form { display:flex; flex-direction:column; gap:14px; }
         .producto-detalle input { padding:14px 16px; border:1px solid #e5e7eb; border-radius:10px; font-size:15px; background:#f9fafb; }
-        .producto-detalle input:focus { outline:none; border-color:#667eea; background:white; }
-        .producto-detalle button { padding:16px; border:none; border-radius:12px; background:#667eea; color:white; font-size:16px; font-weight:600; cursor:pointer; transition:all 0.2s; }
+        .producto-detalle input:focus { outline:none; border-color:#3b82f6; background:white; }
+        .producto-detalle button { padding:16px; border:none; border-radius:12px; background:#3b82f6; color:white; font-size:16px; font-weight:600; cursor:pointer; transition:all 0.2s; }
         .producto-detalle button:hover { background:#4338ca; transform:translateY(-1px); }
 
         @media(max-width:768px){ .producto-wrap { grid-template-columns:1fr; } }
