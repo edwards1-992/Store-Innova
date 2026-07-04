@@ -1,0 +1,626 @@
+/*Selector que permite realizar configuraciones: variables, colores, fuentes y tamaños*/
+:root {
+    /*Color principal del sitio*/
+    --primario: #07948d;
+ /*Aplica un fondo sutil (over Effect)*/
+    --primarioOscuro: #ebe9f13c;
+/*Aplica color beige claro, para fondos o elementos secundarios*/
+    --secundario: #f4f4eb;
+/*Aplica tono grisaceo transparente*/
+    --secundarioOscuro: rgba(140, 135, 135, 0.531);
+/*Aplica texto gris oscuro casi negro con tono suave*/
+    --blanco: #080808;
+/*Aplica un tono gris muy oscuro con una transparencia casi imperceptible para un 
+diseño más suave */
+    --negro: #0e0e0efd;
+/*Aplica una fuente display con estilo geometrico, ideal para titulos llamativos y modernos*/
+    --fuentePrincipal: 'Staatliches', cursive;
+}
+
+html 
+/*Cambia el modelo de caja para que el width y height incluyan el padding y el border. 
+Hace que el cálculo del tamaño sea más facil de entender.*/
+{
+    box-sizing: border-box;
+    font-size: 62.5%; 
+}
+/*Por defecto, el ancho y alto de un elemento no incluyen el espacio interior entre el contenido
+ de un elemento HTML y su borde.Con border-box, el ancho y alto incluyen el contenido, el padding
+ y el borde, lo que facilita mucho la organizacion y distribucion de los elementos de una pagina web*/
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+/** Globales **/
+/** Define color de fondo del cuerpo del documento, define el tamaño de fuente base, mejora la
+ accesibilidad y escalabilidad del diseño.**/
+body {
+    background-color: var(--primario);
+    font-size: 1.6rem;
+    line-height: 1.5;
+}
+/**Aplica estilos específicos a todos los elementos (párrafos) en tu sitio web.**/
+p {
+    font-size: 1.8rem;
+    font-family: Arial, Helvetica, sans-serif;
+    color: var(--blanco);
+/** Por defecto los navegadores muestran los enlaces con un subrayado para indicar que son vinculable.
+ Al aplicar text-decoration: none, ese subrayado desaparece, lo que permite un diseño más limpio**/  
+}
+a {
+    text-decoration: none;
+}
+/**Hace que todas las imágenes se ajusten al ancho completo de su contenedor**/
+img {
+    width: 100%;
+}
+/**Define un contenedor centralizado y con ancho máximo controlado**/
+.contenedor {
+    max-width: 120rem;
+    margin: 0 auto;
+}
+/** Aplica estilos comunes a los encabezados h1, h2 y h3 que suelen usarse para títulos y subtítulos
+ en una página web**/
+h1, h2, h3 {
+    text-align: center;
+    color: var(--secundario);
+    font-family: var(--fuentePrincipal);
+}
+h1 {
+    font-size: 4rem;
+}
+h2 {
+    font-size: 3.2rem;
+}
+h3 {
+    font-size: 2.4rem;
+}
+
+/** Header **/
+/**Se comporta como un contenedor flex y que sus elementos hijos se alinean horizontalmente  al centro.**/
+.header {
+    display: flex;
+    justify-content: center;
+}
+.header__logo {
+    margin: 3rem 0;
+}
+/** Footer **/
+/**Establece el color de fondo del pie de página usando una variable CSS llamada --primarioOscuro. Esto
+ permite mantener coherencia en la paleta de colores y facilita su modificación desde un solo lugar**/
+.footer {
+    background-color: var(--primarioOscuro);
+    padding: 1rem 0;
+    margin-top: 2rem;
+}
+.footer__texto {
+    font-family: var(--fuentePrincipal);
+    text-align: center;
+    font-size: 2.2rem;
+}
+/** Navegacion **/
+/**Este bloque de CSS define el estilo de un contenedor con la clase .navegacion, que se usa para un menú
+ o barra de navegación.**/
+.navegacion {
+    background-color: var(--primarioOscuro);
+    padding: 1rem 0;
+    display: flex;
+    justify-content: center;
+    gap: 2rem; 
+}
+/** Este bloque de CSS define el estilo visual de los enlaces dentro de la navegación, específicamente
+aquellos con la clase .navegacion__enlace**/
+.navegacion__enlace {
+    font-family: var(--fuentePrincipal);
+    color: var(--blanco);
+    font-size: 3rem;
+}
+/**Aplica el color definido por la variable --secundario al enlace que está marcado como activo**/
+.navegacion__enlace--activo,
+.navegacion__enlace:hover {
+    color: var(--secundario);
+}
+
+/** Grid **/
+.grid {
+    /** Activa el modelo de diseño Grid, que permite organizar elementos en filas y columnas
+     de forma bidimensional**/
+    display: grid;
+    /**Crea 2 columnas de igual ancho, cada una ocupando una fracción del espacio disponible**/
+    grid-template-columns: repeat(2, 1fr);
+    /**Aplica un espaciado uniforme entre filas y columnas**/
+    gap: 2rem;
+}
+/**Aplica los siguientes estilos dentro de este bloque solo si el ancho de la pantalla es de 768
+ píxeles o más**/
+@media (min-width: 768px) {
+    .grid {
+        /** Define una rejilla de 3 columnas de igual ancho dentro de un contenedor que tenga 
+        diseño en cuadrícula**/
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/** Productos **/
+/** Aplica estilos visuales a los elementos con la clase .producto, que representa cada bloque de producto **/
+.producto {
+    /** Establece el color de fondo de un elemento utilizando una variable CSS personalizada llamada
+     --primarioOscuro.**/
+    background-color: var(--primarioOscuro);
+    padding: 1rem;
+}
+
+.producto__nombre {
+    /**Establece el tamaño de la fuente de un elemento, usando la unidad relativa rem**/
+    font-size: 4rem;
+}
+/**Define el estilo visual para los elementos con la clase. producto__precio, que representan
+ el precio de un producto en la pagina web. **/
+.producto__precio {
+    /**Establece el tamaño del texto en un elemento HTML, utilizando la unidad relativa rem **/
+    font-size: 2.8rem;
+    /**Establece el color del texto de un elemento utilizando una variable CSS personalizada 
+    llamada --secundario. **/
+    color: var(--secundario);
+}
+.producto__nombre,
+/** Define el estilo visual para los elementos de la clase .producto__precio, que representan el 
+precio de un producto en la página web **/
+.producto__precio {
+    /** Define la fuente tipográfica que se usará en un elemento HTML, utilizando una variable CSS
+     personalizada llamada --fuentePrincipal. **/
+    font-family: var(--fuentePrincipal);
+    /**Define el espaciado externo (margen) de un elemento**/
+    margin: 1rem 0;
+    text-align: center;
+    /**Define el espacio externo (margen) de uno de los elemento**/
+    line-height: 1.2;
+}
+
+/** Graficos **/
+/** Este bloque aplica estilos a un elemento con la clase .grafico **/
+.grafico {
+    /** Establece una altura mínima para un elemento en CSS, el elemento nunca será más bajo que 30rem,
+     incluso si su contenido es más pequeño. **/
+    min-height: 30rem;
+    /** Indica que la imagen de fondo no debe repetirse dentro del elemento al que se aplica **/
+    background-repeat: no-repeat;
+    /** Ajusta el tamaño de una imagen proporcionalmente para que no queden espacios vacíos **/
+    background-size: cover;
+    /** Representa una grilla (regilla) indicandole que debe ocupar desde la línea de columna 1 
+    hasta la línea de columna 3. **/
+    grid-column: 1 / 3;
+}
+/** Este bloque aplica estilos a un elemento con la clase .grafico--camisas, que forma parte de
+ la cuadrícula visual**/
+.grafico--camisas {
+    /** Le indica que debe colocarse en la segunda fila de la cuadrícula, ocupando exactamente 
+    una fila de alto. **/
+    grid-row: 2 / 3;
+    /** Establece una imagen de fondo para un elemento HTML usando CSS **/
+    background-image: url(../img/grafico1.jpg);
+}
+ /** Este bloque de código CSS aplica estilos a un elemento con la clase .grafico--node,
+ en una sección visual dentro de una cuadrícula en el diseño. **/
+.grafico--node {
+    background-image: url(../img/grafico2.jpg);
+    grid-row: 8 / 9;
+}
+
+@media (min-width: 768px) {
+    .grafico--node {
+        grid-row: 5 / 6;
+        grid-column: 2 / 4;
+    }
+}
+
+/** Nosotros **/
+.nosotros {
+    display: grid;
+    grid-template-rows: repeat(2, auto);
+}
+@media (min-width: 768px) {
+    .nosotros {
+        grid-template-columns: repeat(2, 1fr);
+        column-gap: 2rem;
+    }
+}
+.nosotros__imagen {
+    grid-row: 1 / 2;
+}
+@media (min-width: 768px) {
+    .nosotros__imagen {
+       grid-column: 2 / 3;
+    }
+}
+
+/** Bloques **/
+.bloques {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+}
+@media (min-width: 768px) {
+    .bloques {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+.bloque {
+    text-align: center;
+}
+
+.bloque__titulo {
+    margin: 0;
+}
+
+/** Pagina del Producto **/
+@media (min-width: 768px) {
+    .camisa {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        column-gap: 2rem;
+    }
+}
+
+.formulario {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+}
+.formulario__campo {
+   border: 1rem solid var(--primarioOscuro);
+   background-color: transparent;
+   color: var(--blanco);
+   font-size: 2rem;
+   font-family: Arial, Helvetica, sans-serif;
+   padding: 1rem;
+   appearance: none;
+}
+.formulario__submit {
+    background-color: var(--secundario);
+    border: none;
+    font-size: 2rem;
+    font-family: var(--fuentePrincipal);
+    padding: 2rem;
+    transition: background-color .3s ease;
+    grid-column: 1 / 3;
+}
+.formulario__submit:hover {
+    cursor: pointer;
+    background-color: var(--secundarioOscuro);
+}
+
+/* -----------------------------
+   CONTENEDOR WIDGET (FIJO)
+------------------------------ */
+.carrito-widget {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 3000;
+    font-family: 'Staatliches', sans-serif;
+}
+
+/* -----------------------------
+   ICONO DE CARRITO
+------------------------------ */
+#carrito-icono {
+    background: #000;
+    color: #fff;
+    padding: 10px 14px;
+    border-radius: 14px;
+    font-size: 22px;
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    gap: 6px;
+
+    border: 2px solid #000;
+    transition: background 0.2s ease, border 0.2s ease;
+}
+
+#carrito-icono:hover {
+    color: #000;
+    border-color: #000;
+}
+
+/* -----------------------------
+   CONTADOR
+------------------------------ */
+#carrito-contador {
+    background: #ff3333;
+    color: #fff;
+    font-size: 13px;
+    padding: 2px 7px;
+    border-radius: 12px;
+}
+
+/* -----------------------------
+   PANEL DEL CARRITO
+------------------------------ */
+#carrito-panel {
+    background: #1a1a1a;
+    border: 3px solid #000;
+    border-radius: 16px;
+    width: 320px;
+    padding: 18px;
+    margin-top: 12px;
+    box-shadow: 0px 8px 20px rgba(0,0,0,0.45);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-8px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.oculto {
+    display: none;
+}
+
+/* -----------------------------
+   TITULO
+------------------------------ */
+#carrito-panel h3 {
+    margin: 0 0 12px 0;
+    text-align: center;
+    font-size: 26px;
+    letter-spacing: 1px;
+}
+
+/* -----------------------------
+   LISTA
+------------------------------ */
+#lista-carrito {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    max-height: 250px;
+    overflow-y: auto;
+}
+
+/* ITEM */
+#lista-carrito li {
+    background: #2a2a2a;
+    padding: 12px 14px;
+    margin-bottom: 10px;
+    border-radius: 12px;
+    border: 2px solid #000;
+    color: #fff;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    transition: background 0.2s ease;
+}
+
+#lista-carrito li:hover {
+    background: #e5e5e5;
+}
+
+/* TEXTO INFO */
+.item-info {
+    font-size: 16px;
+    color: #fff;
+    line-height: 1.3;
+}
+
+/* PRECIO */
+.item-precio {
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+}
+
+/* -----------------------------
+   TOTAL
+------------------------------ */
+#carrito-panel p {
+    font-size: 20px;
+    text-align: center;
+    margin-top: 12px;
+    font-weight: bold;
+    color: #fff;
+}
+
+/* MENSAJE VACÍO */
+#mensaje-vacio {
+    text-align: center;
+    margin-top: 10px;
+    color: #fff;
+    font-size: 17px;
+}
+
+.btn-logout {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    padding: 10px 18px;
+    border: none;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #ff4d4d, #cc0000);
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
+}
+
+.btn-logout:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    background: linear-gradient(135deg, #ff3333, #990000);
+}
+
+.btn-logout:active {
+    transform: scale(0.95);
+}
+
+/* =========================================
+   BOTONES SUPERIORES
+========================================= */
+
+.acciones-superiores {
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 15px;
+
+    margin: 2rem 0;
+}
+
+.boton-top {
+
+    background-color: #1e90ff;
+
+    color: white;
+
+    padding: 1rem 2rem;
+
+    border-radius: 1rem;
+
+    text-decoration: none;
+
+    font-size: 1.8rem;
+
+    transition: 0.3s;
+}
+
+.boton-top:hover {
+
+    background-color: #0066cc;
+
+    transform: translateY(-3px);
+}
+
+.boton-top.activo {
+
+    background-color: #004a99;
+}
+
+/* =========================================
+   HERO NOSOTROS
+========================================= */
+
+.hero-nosotros {
+
+    width: 100%;
+
+    padding: 6rem 2rem;
+
+    text-align: center;
+
+    background: linear-gradient(
+        to right,
+        rgba(0,0,0,0.7),
+        rgba(0,0,0,0.4)
+    ),
+    url('../img/principal.png');
+
+    background-size: cover;
+
+    background-position: center;
+
+    margin-bottom: 4rem;
+}
+
+.hero-nosotros__contenido h1 {
+
+    color: white;
+
+    font-size: 5rem;
+
+    margin-bottom: 2rem;
+}
+
+.hero-nosotros__contenido p {
+
+    color: white;
+
+    font-size: 2rem;
+
+    max-width: 800px;
+
+    margin: auto;
+
+    line-height: 1.6;
+}
+
+/* =========================================
+   TARJETAS NOSOTROS
+========================================= */
+
+.nosotros-grid {
+
+    display: grid;
+
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+
+    gap: 3rem;
+
+    margin-bottom: 5rem;
+}
+
+.nosotros-card {
+
+    background: white;
+
+    padding: 3rem;
+
+    border-radius: 1.5rem;
+
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+
+    text-align: center;
+
+    transition: 0.3s;
+}
+
+.nosotros-card:hover {
+
+    transform: translateY(-5px);
+}
+
+.nosotros-card h2 {
+
+    color: #1e90ff;
+
+    margin-bottom: 1.5rem;
+
+    font-size: 2.8rem;
+}
+
+.nosotros-card p {
+
+    font-size: 1.7rem;
+
+    line-height: 1.7;
+}
+
+/* =========================================
+   IMAGEN CENTRAL
+========================================= */
+
+.imagen-central {
+
+    width: 100%;
+
+    text-align: center;
+
+    margin-bottom: 5rem;
+}
+
+.imagen-central img {
+
+    width: 100%;
+
+    max-width: 900px;
+
+    border-radius: 2rem;
+
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
