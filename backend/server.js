@@ -74,8 +74,8 @@ app.get('/productos', async (req, res) => {
         );
         res.json(rows);
     } catch (error) {
-        console.log(error);
-        res.status(500).json({ error: 'Error obteniendo productos' });
+        console.log('Error en /productos:', error.message);
+        res.status(500).json({ error: error.message });
     }
 });
 
@@ -140,6 +140,13 @@ app.get('/mis-ventas-detalle/:usuario', async (req, res) => {
     }
 });
 
-app.listen(3000, () => {
-    console.log('Servidor corriendo en puerto 3000');
+const PORT = process.env.PORT || 3000;
+
+console.log('MYSQLHOST:', process.env.MYSQLHOST || 'localhost');
+console.log('MYSQLPORT:', process.env.MYSQLPORT || 3306);
+console.log('MYSQLUSER:', process.env.MYSQLUSER || 'root');
+console.log('MYSQLDATABASE:', process.env.MYSQLDATABASE || 'tiendaOnline');
+
+app.listen(PORT, () => {
+    console.log('Servidor corriendo en puerto', PORT);
 });
