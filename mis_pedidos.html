@@ -13,7 +13,7 @@
         .navbar { width:100%; padding:0 40px; height:80px; display:flex; justify-content:space-between; align-items:center; background:rgba(255,255,255,0.06); backdrop-filter:blur(16px); border-bottom:1px solid rgba(255,255,255,0.08); position:sticky; top:0; z-index:1000; transition:all 0.3s; }
         .navbar.scrolled { background:rgba(15,23,42,0.95); box-shadow:0 4px 30px rgba(0,0,0,0.4); }
         .logo { display:flex; align-items:center; }
-        .logo img { height:55px; }
+        .logo img { height:85px; }
         .menu { display:flex; gap:6px; }
         .menu a { text-decoration:none; color:rgba(255,255,255,0.85); padding:10px 20px; border-radius:8px; background:rgba(255,255,255,0.08); transition:all 0.3s; font-size:14px; font-weight:500; border:1px solid transparent; }
         .menu a:hover { background:rgba(59,130,246,0.15); border-color:rgba(59,130,246,0.3); color:white; }
@@ -35,16 +35,19 @@
         footer { text-align:center; padding:24px 20px; color:rgba(255,255,255,0.4); font-size:13px; border-top:1px solid rgba(255,255,255,0.06); margin-top:40px; }
 
         @media(max-width:768px){
-            .navbar { padding:0 16px; height:70px; }
-            .logo img { height:45px; }
+            .navbar { padding:0 12px; height:auto; min-height:70px; flex-wrap:wrap; gap:8px; }
+            .logo img { height:65px; }
             .hamburger { display:flex; }
-            .menu { position:fixed; top:0; right:-100%; width:75%; max-width:280px; height:100vh; background:rgba(15,23,42,0.98); flex-direction:column; padding:90px 20px 20px; gap:8px; transition:right 0.3s; z-index:999; border-left:1px solid rgba(255,255,255,0.08); }
+            .menu { position:fixed; top:0; right:-100%; width:80%; max-width:300px; height:100vh; background:rgba(15,23,42,0.98); flex-direction:column; padding:100px 24px 24px; gap:10px; transition:right 0.3s; z-index:999; border-left:1px solid rgba(255,255,255,0.08); }
             .menu.open { right:0; }
-            .menu a { width:100%; text-align:center; padding:14px; }
-            .usuario-info { position:fixed; bottom:0; left:0; width:100%; justify-content:center; padding:14px 16px; background:rgba(15,23,42,0.95); z-index:999; border-top:1px solid rgba(255,255,255,0.08); }
+            .menu a { width:100%; text-align:center; padding:16px; font-size:16px; border-radius:12px; }
+            .usuario-info { position:fixed; bottom:0; left:0; width:100%; justify-content:center; padding:16px; background:rgba(15,23,42,0.98); z-index:999; border-top:1px solid rgba(255,255,255,0.1); }
             .usuario-info span { display:none; }
-            .usuario-info button { width:100%; max-width:300px; padding:14px; }
+            .usuario-info button { width:100%; max-width:340px; padding:16px; font-size:16px; border-radius:12px; }
             .container { padding:0 12px; }
+            .container h1 { font-size:22px; }
+            .pedido { padding:16px; }
+            footer { padding:20px 16px; font-size:12px; }
         }
     </style>
 </head>
